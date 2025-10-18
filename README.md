@@ -1,14 +1,12 @@
-
-```markdown
 # 🚪 ESP32 Smart Garage Door Controller
 
 > Professional IoT garage door automation system with web control, real-time monitoring, and OTA firmware updates
 
-[![Platform](https://img.shields.io/badge/Platform-ESP32-blue.svg)](https://www.espressif.com/en/products/socs/esp32)
-[![Framework](https://img.shields.io/badge/Framework-ESP--IDF%20v4.4%2B-green.svg)](https://docs.espressif.com/projects/esp-idf/en/latest/)
-[![Language](https://img.shields.io/badge/Language-C%2FC%2B%2B-orange.svg)](https://isocpp.org/)
-[![License](https://img.shields.io/badge/License-CC0--1.0-lightgrey.svg)](LICENSE)
-[![Wokwi](https://img.shields.io/badge/Simulation-Wokwi-purple.svg)](https://wokwi.com/)
+![Platform](https://img.shields.io/badge/Platform-ESP32-blue.svg)
+![Framework](https://img.shields.io/badge/Framework-ESP--IDF%20v4.4%2B-green.svg)
+![Language](https://img.shields.io/badge/Language-C%2FC%2B%2B-orange.svg)
+![License](https://img.shields.io/badge/License-CC0--1.0-lightgrey.svg)
+![Wokwi](https://img.shields.io/badge/Simulation-Wokwi-purple.svg)
 
 ---
 
@@ -57,31 +55,34 @@ Built with **ESP-IDF** (Espressif IoT Development Framework) in C/C++, this proj
 ## ✨ Features
 
 ### Core Functionality
+
 | Feature | Description |
 |---------|-------------|
-| 🚪 **Remote Control** | Open/close garage door via web interface or API |
-| 📊 **Real-time Monitoring** | Continuous door state tracking with sensor validation |
-| 🔄 **State Machine** | Robust state management (OPEN, OPENING, CLOSING, CLOSED) |
-| 🔌 **Hardware Sensors** | Magnetic/limit switches detect actual door position |
-| ⏱️ **Safety Timeouts** | Automatic error detection if door doesn't complete operation |
+| 🚪 Remote Control | Open/close garage door via web interface or API |
+| 📊 Real-time Monitoring | Continuous door state tracking with sensor validation |
+| 🔄 State Machine | Robust state management (OPEN, OPENING, CLOSING, CLOSED) |
+| 🔌 Hardware Sensors | Magnetic/limit switches detect actual door position |
+| ⏱️ Safety Timeouts | Automatic error detection if door doesn't complete operation |
 
 ### Web & Connectivity
+
 | Feature | Description |
 |---------|-------------|
-| 🌐 **Web Interface** | Clean, responsive HTML interface with status and controls |
-| 📡 **RESTful API** | JSON endpoints for system integration |
-| 📶 **WiFi Stable** | Automatic reconnection handling |
-| 🔄 **OTA Updates** | Over-the-air firmware updates without physical access |
-| ⏰ **NTP Sync** | Automatic time synchronization (Australian NTP servers) |
+| 🌐 Web Interface | Clean, responsive HTML interface with status and controls |
+| 📡 RESTful API | JSON endpoints for system integration |
+| 📶 WiFi Stable | Automatic reconnection handling |
+| 🔄 OTA Updates | Over-the-air firmware updates without physical access |
+| ⏰ NTP Sync | Automatic time synchronization (Australian NTP servers) |
 
 ### Development & Testing
+
 | Feature | Description |
 |---------|-------------|
-| 🧪 **Wokwi Simulation** | Full circuit simulation for development without hardware |
-| 📊 **Debug Logging** | Comprehensive ESP-IDF logging with configurable levels |
-| 🔧 **Configurable** | Easy setup via `idf.py menuconfig` |
-| 📐 **Modular Design** | Clean component-based architecture |
-| 📡 **MQTT Ready** | Infrastructure in place for MQTT integration |
+| 🧪 Wokwi Simulation | Full circuit simulation for development without hardware |
+| 📊 Debug Logging | Comprehensive ESP-IDF logging with configurable levels |
+| 🔧 Configurable | Easy setup via `idf.py menuconfig` |
+| 📐 Modular Design | Clean component-based architecture |
+| 📡 MQTT Ready | Infrastructure in place for MQTT integration |
 
 ---
 
@@ -90,77 +91,40 @@ Built with **ESP-IDF** (Espressif IoT Development Framework) in C/C++, this proj
 ### Component Diagram
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                      ESP32 Application Layer                     │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                   │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
-│  │   HTTP      │  │   Door      │  │    OTA      │             │
-│  │   Server    │  │   State     │  │   Update    │             │
-│  │             │  │   Machine   │  │   Manager   │             │
-│  └──────┬──────┘  └──────┬──────┘  └─────────────┘             │
-│         │                 │                                       │
-│  ┌──────┴────────┐  ┌─────┴──────────────┐                     │
-│  │  • Web UI     │  │  • Relay Control   │                     │
-│  │  • JSON API   │  │  • Sensor Reading  │                     │
-│  │  • Handlers   │  │  • State Logic     │                     │
-│  └───────────────┘  └────────────────────┘                     │
-│                                                                   │
-├─────────────────────────────────────────────────────────────────┤
-│                     ESP-IDF Framework Layer                      │
-│                                                                   │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │
-│  │  WiFi    │  │   NTP    │  │  HTTP    │  │ FreeRTOS │       │
-│  │  Stack   │  │  Client  │  │  Server  │  │  Tasks   │       │
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘       │
-└─────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│                        Hardware Layer                            │
-│                                                                   │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐       │
-│  │  Relay   │  │   Open   │  │  Close   │  │  Status  │       │
-│  │  Module  │  │  Sensor  │  │  Sensor  │  │   LED    │       │
-│  │ (GPIO13) │  │ (GPIO34) │  │ (GPIO35) │  │ (GPIO18) │       │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘       │
-│       │             │              │              │              │
-└───────┼─────────────┼──────────────┼──────────────┼──────────────┘
-        ↓             ↓              ↓              ↓
-   [Garage      [Door Fully    [Door Fully    [Visual
-    Door         Open           Closed         Status]
-    Opener]      Position]      Position]
+ESP32 Application Layer
+├── HTTP Server (Web UI & JSON API)
+├── Door State Machine (Control Logic)
+└── OTA Update Manager
+
+ESP-IDF Framework Layer
+├── WiFi Stack
+├── NTP Client
+├── HTTP Server
+└── FreeRTOS Tasks
+
+Hardware Layer
+├── Relay Module (GPIO 13)
+├── Open Sensor (GPIO 34)
+├── Close Sensor (GPIO 35)
+└── Status LED (GPIO 18)
 ```
 
-### State Machine Diagram
+### State Machine Flow
 
 ```
-                    ┌──────────┐
-           ┌────────│  INITIAL │────────┐
-           │        └──────────┘        │
-           │                            │
-    Open Sensor                   Close Sensor
-      Triggered                      Triggered
-           │                            │
-           ↓                            ↓
-      ┌─────────┐                 ┌─────────┐
-      │  OPEN   │                 │ CLOSED  │
-      └────┬────┘                 └────┬────┘
-           │                            │
-      Close Cmd                    Open Cmd
-           │                            │
-           ↓                            ↓
-      ┌─────────┐                 ┌─────────┐
-      │ CLOSING │────Timeout───→  │ OPENING │
-      └────┬────┘                 └────┬────┘
-           │                            │
-    Close Sensor                  Open Sensor
-      Triggered                      Triggered
-           │                            │
-           └────────────┬───────────────┘
-                        ↓
-                  [Back to OPEN/CLOSED]
+INITIAL STATE
+├── If Open Sensor Active → OPEN
+└── If Close Sensor Active → CLOSED
 
-Note: Timeout transitions to ERROR state (not shown)
+OPEN STATE
+└── Close Command → CLOSING → Close Sensor → CLOSED
+
+CLOSED STATE
+└── Open Command → OPENING → Open Sensor → OPEN
+
+ERROR STATES
+├── Timeout during OPENING → ERROR
+└── Timeout during CLOSING → ERROR
 ```
 
 ---
@@ -195,32 +159,21 @@ Note: Timeout transitions to ERROR state (not shown)
 
 ### Wiring Diagram
 
-```
-ESP32 DevKit                    5V Relay Module
-┌─────────────┐                ┌──────────────┐
-│             │                │              │
-│  GPIO 13 ───┼───────────────→│ IN           │
-│  GND ────────┼───────────────→│ GND          │
-│  5V ─────────┼───────────────→│ VCC          │
-│             │                │              │
-│             │                │ COM ─────────┼───→ Garage Door
-│             │                │ NO ──────────┼───→ Opener Button
-└─────────────┘                └──────────────┘     Terminals
+**ESP32 to Relay Module:**
+- ESP32 GPIO 13 → Relay IN
+- ESP32 GND → Relay GND  
+- ESP32 5V → Relay VCC
+- Relay COM → Garage Door Opener Terminal 1
+- Relay NO → Garage Door Opener Terminal 2
 
-Open Sensor                         Close Sensor
-(Magnetic Switch)                   (Magnetic Switch)
-┌────────────┐                      ┌────────────┐
-│    SW1     │                      │    SW2     │
-└──┬─────┬───┘                      └──┬─────┬───┘
-   │     │                             │     │
-   │     └─────────3.3V─────────────────┘     │
-   │                                          │
-   └─→ GPIO 34                        GPIO 35 ←┘
-       ESP32                          ESP32
+**Sensors to ESP32:**
+- Open Sensor Terminal 1 → ESP32 GPIO 34
+- Open Sensor Terminal 2 → ESP32 3.3V
+- Close Sensor Terminal 1 → ESP32 GPIO 35
+- Close Sensor Terminal 2 → ESP32 3.3V
 
-Status LED (Simulation)
-       GPIO 18 ──→ 220Ω ──→ LED ──→ GND
-```
+**Status LED (Simulation):**
+- ESP32 GPIO 18 → 220Ω Resistor → LED Anode → LED Cathode → GND
 
 ### Installation Steps
 
@@ -370,12 +323,14 @@ GET /index
 
 ### RESTful JSON API
 
-#### Get System Status
+### Get System Status
+
 ```http
 GET /status
 ```
 
-**Response**: `application/json`
+**Response:** application/json
+
 ```json
 {
   "SystemTime": "2024-10-18 14:23:45",
@@ -384,54 +339,50 @@ GET /status
 }
 ```
 
-**Door Status Values**:
+**Door Status Values:**
 - `OPEN` - Door fully open (sensor confirmed)
 - `OPENING` - Door opening in progress
 - `CLOSING` - Door closing in progress  
 - `CLOSED` - Door fully closed (sensor confirmed)
 - `UNKNOWN` - Initial state or sensor error
 
----
+### Open Door Command
 
-#### Open Door Command
 ```http
 POST /openDoor
 ```
 
-**Behavior**:
+**Behavior:**
 1. Checks if door is CLOSED
 2. Activates relay (pulse for 500ms)
 3. Changes state to OPENING
 4. Waits for open sensor confirmation
 5. Changes to OPEN when sensor triggers
 
-**Response**: `200 OK` (command accepted)
+**Response:** 200 OK (command accepted)
 
-**Error Cases**:
+**Error Cases:**
 - Door already OPEN or OPENING
 - Timeout waiting for sensor (30s)
 
----
+### Close Door Command
 
-#### Close Door Command
 ```http
 POST /closeDoor
 ```
 
-**Behavior**:
+**Behavior:**
 1. Checks if door is OPEN
 2. Activates relay (pulse for 500ms)
 3. Changes state to CLOSING
 4. Waits for close sensor confirmation
 5. Changes to CLOSED when sensor triggers
 
-**Response**: `200 OK` (command accepted)
+**Response:** 200 OK (command accepted)
 
-**Error Cases**:
+**Error Cases:**
 - Door already CLOSED or CLOSING
 - Timeout waiting for sensor (30s)
-
----
 
 ### Integration Examples
 
@@ -1243,7 +1194,7 @@ The author(s) assume **ZERO liability** for:
 ## 📁 Project Structure
 
 ```
-GarageDoor/
+ESP32-Smart-Garage-Door_Controller/
 │
 ├── main/                           # Main application code
 │   ├── main.cpp                    # Entry point, state machine, GPIO control
@@ -1534,7 +1485,7 @@ This garage door controller is part of a comprehensive IoT portfolio demonstrati
 **Technology**: Python, OpenCV, Selenium, NumPy, PyAutoGUI  
 **Features**: Computer vision-based automation, template matching, browser control, legacy system integration  
 **Skills**: Computer vision, image processing, automation, pattern recognition  
-**Repository**: [(https://github.com/adilsondias-engineer/visual_process_automation)]
+**Repository**: [[Link to automation framework](https://github.com/adilsondias-engineer/visual_process_automation)]  
 **Status**: Educational project demonstrating RPA techniques
 
 ---
@@ -1728,7 +1679,7 @@ This project is dedicated to the **public domain** under the [CC0 1.0 Universal 
 ### Author
 **Adilson Dias**
 
-- **GitHub**: [@adilsondias-enginee](https://github.com/adilsondias-enginee)
+- **GitHub**: [@adilsondias-engineer](https://github.com/adilsondias-engineer)
 - **LinkedIn**: [Adilson Dias](https://linkedin.com/in/adilsondias)
 - **Project**: Created as ESP-IDF learning project for IoT home automation
 
@@ -1809,6 +1760,14 @@ This project is dedicated to the **public domain** under the [CC0 1.0 Universal 
 - Home Assistant integration
 - Voice control support
 - Mobile apps
+
+---
+
+**⭐ If you find this project helpful, please star it on GitHub!**
+
+**🐛 Found a bug? [Open an issue](https://github.com/adilsondias-engineer/ESP32-Smart-Garage-Door_Controller/issues)**
+
+**💡 Have an idea? [Start a discussion](https://github.com/adilsondias-engineer/ESP32-Smart-Garage-Door_Controller/discussions)**
 
 ---
 
