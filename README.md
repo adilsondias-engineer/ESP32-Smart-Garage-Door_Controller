@@ -1,5 +1,3 @@
--> This is project was created sometime in 2022 and it's still in use. AI generated documentation with the following prompt:
-Generate @README.md for this project
 
 ```markdown
 # 🚪 ESP32 Smart Garage Door Controller
@@ -1536,7 +1534,7 @@ This garage door controller is part of a comprehensive IoT portfolio demonstrati
 **Technology**: Python, OpenCV, Selenium, NumPy, PyAutoGUI  
 **Features**: Computer vision-based automation, template matching, browser control, legacy system integration  
 **Skills**: Computer vision, image processing, automation, pattern recognition  
-**Repository**: [Link to automation framework]  
+**Repository**: [(https://github.com/adilsondias-engineer/visual_process_automation)]
 **Status**: Educational project demonstrating RPA techniques
 
 ---
@@ -1586,7 +1584,7 @@ Contributions welcome! Help improve this project's functionality, safety, and do
 
 1. **Fork the Repository**
    ```bash
-   git clone https://github.com/adilsondias/GarageDoor.git
+   git clone https://github.com/adilsondias-engineer/ESP32-Smart-Garage-Door_Controller.git
    cd GarageDoor
    git checkout -b feature/my-enhancement
    ```
