@@ -1703,32 +1703,6 @@ This project is dedicated to the **public domain** under the [CC0 1.0 Universal 
 - Portfolio reviews and feedback welcome
 
 ---
-
-## 📊 Project Statistics
-
-![Version](https://img.shields.io/badge/Version-1.0-blue)
-![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-~2500-green)
-![Components](https://img.shields.io/badge/Components-4-orange)
-![Languages](https://img.shields.io/badge/Languages-C%2FC%2B%2B-red)
-![Status](https://img.shields.io/badge/Status-Educational-yellow)
-
-**Development Timeline**:
-- Planning & Design: 1 week
-- Core Implementation: 2 weeks  
-- Hardware Testing: 1 week
-- Documentation: 1 week
-- **Total**: ~5 weeks part-time
-
-**Code Metrics**:
-- Main application: ~800 lines
-- HTTP server: ~400 lines
-- Utilities: ~300 lines
-- MQTT (stub): ~200 lines
-- Comments & documentation: ~800 lines
-- **Total**: ~2,500 lines
-
----
-
 ## 🗺️ Version History
 
 ### Version 1.0 (Current) - October 2024
