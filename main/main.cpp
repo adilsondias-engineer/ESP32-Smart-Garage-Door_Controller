@@ -1,9 +1,3 @@
-/*
- * SPDX-FileCopyrightText: 2010-2022 Espressif Systems (Shanghai) CO LTD
- *
- * SPDX-License-Identifier: CC0-1.0
- */
-
 #include <stdio.h>
 #include <inttypes.h>
 #include "sdkconfig.h"
@@ -46,9 +40,6 @@
 #define GARAGE_DOOR_CLOSED_SENSOR_PIN GPIO_NUM_35
 #define HIGH 1
 #define LOW 0
-// #define DOG_APP_TAG "Dog App"
-// #define TAG "Dog App"
-// #define MQTT_STATUS_TOPIC MQTT_TOPIC "/status"
 
 httpd_handle_t http_server;
 
